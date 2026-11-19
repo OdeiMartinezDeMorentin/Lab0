@@ -223,7 +223,6 @@ def select_alphanumeric_and_spaces(text: str) -> str:
     return "".join(char for char in text if char.isalnum() or char == " ")
 
 
-# Alias to match the assignment wording
 remove_punctuation = select_alphanumeric_and_spaces
 
 

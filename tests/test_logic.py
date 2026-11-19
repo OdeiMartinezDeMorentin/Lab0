@@ -25,9 +25,7 @@ from src.preprocessing import (
 )
 
 
-# ---------------------------------------------------------------------------
-# Pytest Fixtures
-# ---------------------------------------------------------------------------
+# Fixtures
 @pytest.fixture
 def sample_numbers() -> List[float]:
     """Generate a standard list of numbers for numerical preprocessing tests."""
@@ -40,9 +38,7 @@ def sample_mixed_missing() -> List[Any]:
     return [1, None, "", float("nan"), 0, False, "hello", 42]
 
 
-# ---------------------------------------------------------------------------
-# Parametrized Tests: Without required options
-# ---------------------------------------------------------------------------
+# Parametrized tests
 @pytest.mark.parametrize(
     "input_values, expected",
     [
@@ -74,9 +70,6 @@ def test_tokenize_text_parametrized(raw_text: str, expected_tokens: List[str]) -
     assert tokenize_text(raw_text) == expected_tokens
 
 
-# ---------------------------------------------------------------------------
-# Parametrized Tests: With options
-# ---------------------------------------------------------------------------
 @pytest.mark.parametrize(
     "values, min_val, max_val, expected",
     [
@@ -110,9 +103,7 @@ def test_min_max_normalize_parametrized(
     )
 
 
-# ---------------------------------------------------------------------------
-# Tests Utilizing Fixtures
-# ---------------------------------------------------------------------------
+# Tests with fixtures
 def test_z_score_standardize_with_fixture(sample_numbers: List[float]) -> None:
     """Test z-score standardization using sample_numbers fixture."""
     standardized = z_score_standardize(sample_numbers)
@@ -146,9 +137,6 @@ def test_fill_missing_values_with_fixture(sample_mixed_missing: List[Any]) -> No
     ]
 
 
-# ---------------------------------------------------------------------------
-# Additional Unit Tests for Complete Coverage & Edge Cases
-# ---------------------------------------------------------------------------
 def test_remove_duplicates() -> None:
     """Test removing duplicates while preserving order for hashable and unhashable items."""
     assert remove_duplicates([3, 1, 2, 1, 3, 4]) == [3, 1, 2, 4]

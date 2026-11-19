@@ -37,9 +37,7 @@ def cli() -> None:
     """MLOps command line interface for data preprocessing."""
 
 
-# ---------------------------------------------------------------------------
-# Group 1: Clean
-# ---------------------------------------------------------------------------
+# Clean commands
 @cli.group()
 def clean() -> None:
     """Data cleaning commands (handling missing values)."""
@@ -77,9 +75,7 @@ def fill_missing_cmd(values: tuple[str, ...], fill_value: str) -> None:
     click.echo(fill_missing_values(parsed, fill_value=fill_value))
 
 
-# ---------------------------------------------------------------------------
-# Group 2: Numeric
-# ---------------------------------------------------------------------------
+# Numeric commands
 @cli.group()
 def numeric() -> None:
     """Numerical preprocessing commands."""
@@ -173,9 +169,7 @@ def log_cmd(values: tuple[float, ...]) -> None:
     click.echo(log_transform(list(values)))
 
 
-# ---------------------------------------------------------------------------
-# Group 3: Text
-# ---------------------------------------------------------------------------
+# Text commands
 @cli.group()
 def text() -> None:
     """Text preprocessing commands."""
@@ -223,9 +217,7 @@ def remove_stopwords_cmd(input_text: str, stop_words: tuple[str, ...]) -> None:
     click.echo(remove_stop_words(input_text, stop_words))
 
 
-# ---------------------------------------------------------------------------
-# Group 4: Struct
-# ---------------------------------------------------------------------------
+# Struct commands
 @cli.group()
 def struct() -> None:
     """List structure preprocessing commands."""
