@@ -223,6 +223,10 @@ def select_alphanumeric_and_spaces(text: str) -> str:
     return "".join(char for char in text if char.isalnum() or char == " ")
 
 
+# Alias to match the assignment wording
+remove_punctuation = select_alphanumeric_and_spaces
+
+
 def remove_stop_words(text: str, stop_words: Iterable[str]) -> str:
     """Remove stop-words from text after lowercasing it.
 
